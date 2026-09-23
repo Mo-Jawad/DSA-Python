@@ -35,6 +35,32 @@ class DoublyLL:
         self.head.prev = newNode 
         self.head = newNode
 
+    def insertInMiddle(self, dataNum, num):
+        newNode = Node(dataNum)
+
+        if self.head is None:
+            print("List is empty")
+            return
+
+        currentNode = self.head 
+
+        while currentNode is not None:
+            if currentNode.data == num:
+                newNode.next = currentNode.next
+                
+                newNode.prev = currentNode
+
+                if currentNode.next is not None:
+                    currentNode.next.prev = newNode
+
+                currentNode.next = newNode
+                
+                return
+            
+            currentNode = currentNode.next
+
+        print("false num input")
+
     def removeFromBegin(self):
         if self.head is None:
             return
@@ -66,7 +92,10 @@ List1.insertAtEnd(100)
 List1.insertAtEnd(70)
 List1.insertAtEnd(80)
 
-List1.removeFromBegin()
-List1.removeFromEnd()
+#List1.removeFromBegin()
+# List1.removeFromEnd()
+
+List1.insertInMiddle(50, 100)
+List1.insertInMiddle(40, 80)
 
 List1.printList()
